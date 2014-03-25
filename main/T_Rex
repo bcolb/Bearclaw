@@ -1,0 +1,50 @@
+import smbus
+import time
+
+bus = smbus.SMBus(0)
+address = 0x07
+
+def moveForward():
+	START = 0x0F
+	PWMFR = 0x06
+
+	LMSHI = (100 & 0xFF)
+	LMSLO = (100 & 0xFF00) >> 8
+	LMBRK = 0x00
+
+	RMSHI = (100 & 0xFF)
+	RMSLO = (100 & 0xFF00) >> 8
+	RMBRK = 0x00
+
+	SER0H = (1500 & 0xFF)
+	SER0L = (1500 & 0xFF00) >> 8
+
+	SER1H = (1500 & 0xFF)
+	SER1L = (1500 & 0xFF00) >> 8
+
+	SER2H = (1500 & 0xFF)
+	SER2L = (1500 & 0xFF00) >> 8
+
+	SER3H = (1500 & 0xFF)
+	SER3L = (1500 & 0xFF00) >> 8
+
+	SER4H = (1500 & 0xFF)
+	SER4L = (1500 & 0xFF00) >> 8
+
+	SER5H = (1500 & 0xFF)
+	SER5L = (1500 & 0xFF00) >> 8
+
+	ACCDV = 0xEA
+
+	IMSNH = (50 & 0xFF)
+	IMSNL = (50 & 0xFF00) >> 8
+
+	LOWBH = (1200 & 0xFF)
+	LOWBL = (1200 & 0xFF00) >> 8
+
+	I2CAD = 0x07
+	I2CCL = 0x00
+
+	bus.write_i2c_block_data(0x07, 48, [START, PWMFR, LMSHI, LMSLO, LMBRK, RMSHI, RMSLO, RMBRK, SER0H, SER0L, SER1H, SER1L, SER2H, SER2L, SER3H, SER3L, SER4H, SER4L, SER5H, SER5L, ACCDV, IMSNH, IMSNL, LOWBH, LOWBL, I2CAD, I2CCL])
+
+def moveBackward():
