@@ -1,6 +1,6 @@
 #! /usr/bin/env python3.3
 # Author: bcolb
-# Version March 12, 2014
+# Version: March 24th, 2014
 # Written for Python 3.3
 
 ''' WildThumper.py: Creates an API for the Wild Thumper Controller\n
